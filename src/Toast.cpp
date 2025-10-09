@@ -1189,6 +1189,10 @@ void Toast::applyPreset(ToastPreset preset)
     setIconSeparatorWidth(2);
 }
 
+QLabel* Toast::textLabel()
+{
+    return m_textLabel;
+}
 
 void Toast::show()
 {

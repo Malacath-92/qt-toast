@@ -143,6 +143,8 @@ public:
     void setFixedHeight(int height);
     void applyPreset(ToastPreset preset);
 
+    QLabel* textLabel();
+
 
 public slots:
     void show();
