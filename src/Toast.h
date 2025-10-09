@@ -83,6 +83,7 @@ public:
     void setShowDurationBar(bool enabled);
     void setTitle(QString title);
     void setText(QString text);
+    void setRichText(QString text);
     void setIcon(QPixmap icon);
     void setIcon(ToastIcon icon);
     void setShowIcon(bool enabled);
@@ -142,8 +143,6 @@ public:
     void setFixedWidth(int width);
     void setFixedHeight(int height);
     void applyPreset(ToastPreset preset);
-
-    QLabel* textLabel();
 
 
 public slots:

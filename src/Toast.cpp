@@ -1,5 +1,7 @@
 #include "Toast.h"
 
+#include <QTextDocument>
+
 
 // Static
 int Toast::s_maximumOnScreen = 3;
@@ -523,6 +525,25 @@ void Toast::setText(QString text)
     }
     m_text = text;
     m_textLabel->setText(text);
+}
+
+void Toast::setRichText(QString text)
+{
+    if (m_used)
+    {
+        return;
+    }
+
+    {
+        QTextDocument doc{};
+        doc.setHtml(text);
+        m_text = doc.toPlainText();
+    }
+
+    m_textLabel->setText(text);
+    m_textLabel->setTextFormat(Qt::RichText);
+    m_textLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    m_textLabel->setOpenExternalLinks(true);
 }
 
 void Toast::setIcon(QPixmap icon)
@@ -1187,11 +1208,6 @@ void Toast::applyPreset(ToastPreset preset)
     setShowIcon(true);
     setShowIconSeparator(true);
     setIconSeparatorWidth(2);
-}
-
-QLabel* Toast::textLabel()
-{
-    return m_textLabel;
 }
 
 void Toast::show()
