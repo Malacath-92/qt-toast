@@ -215,17 +215,17 @@ ToastPosition Toast::getPosition()
 
 int Toast::getCount()
 {
-    return s_currentlyShown.size() + s_queue.size();
+    return static_cast<int>(s_currentlyShown.size() + s_queue.size());
 }
 
 int Toast::getVisibleCount()
 {
-    return s_currentlyShown.size();
+    return static_cast<int>(s_currentlyShown.size());
 }
 
 int Toast::getQueuedCount()
 {
-    return s_queue.size();
+    return static_cast<int>(s_queue.size());
 }
 
 int Toast::getDuration()
@@ -1314,9 +1314,9 @@ void Toast::hide_()
             emit closed();
 
             // Update every other currently shown notification
-            for (Toast* toast : s_currentlyShown)
+            for (Toast* shown_toast : s_currentlyShown)
             {
-                toast->updatePositionY();
+                shown_toast->updatePositionY();
             }
 
             // Show next item from queue after updating
@@ -1328,7 +1328,7 @@ void Toast::hide_()
     }
 }
 
-void Toast::enterEvent(QEnterEvent* event)
+void Toast::enterEvent(QEnterEvent* /*event*/)
 {
     // Reset timer if hovered and resetting is enabled
     if (m_duration != 0 && m_durationTimer->isActive() && m_resetDurationOnHover)
@@ -1345,7 +1345,7 @@ void Toast::enterEvent(QEnterEvent* event)
     }
 }
 
-void Toast::leaveEvent(QEvent* event)
+void Toast::leaveEvent(QEvent* /*event*/)
 {
     // Start timer again when leaving notification and reset is enabled
     if (m_duration != 0 && !m_durationTimer->isActive() && m_resetDurationOnHover)
