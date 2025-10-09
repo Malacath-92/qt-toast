@@ -1913,7 +1913,15 @@ Toast* Toast::getPredecessorToast()
 
 QString Toast::getCurrentDirectory()
 {
+#ifdef QT_TOAST_PACKAGED_RESOURCES
+#define _TOSTRING(arg) #arg
+#define TOSTRING(arg) _TOSTRING(arg)
+    return ":/" TOSTRING(QT_TOAST_PACKAGED_RESOURCES);
+#undef TOSTRING
+#undef _TOSTRING
+#else
     return QFileInfo(__FILE__).absolutePath();
+#endif
 }
 
 QImage Toast::recolorImage(QImage image, QColor color)
