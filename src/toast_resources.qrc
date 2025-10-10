@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource>
+        <file alias="qt-toast/css/toast.css">css/toast.css</file>
+        <file alias="qt-toast/icons/close.png">icons/close.png</file>
+        <file alias="qt-toast/icons/error.png">icons/error.png</file>
+        <file alias="qt-toast/icons/information.png">icons/information.png</file>
+        <file alias="qt-toast/icons/success.png">icons/success.png</file>
+        <file alias="qt-toast/icons/warning.png">icons/warning.png</file>
+    </qresource>
+</RCC>
