@@ -1806,6 +1806,11 @@ QPoint Toast::calculatePosition()
         }
     }
 
+    if (currentScreen == nullptr)
+    {
+        currentScreen = primaryScreen;
+    }
+
     // Calculate x and y position of notification
     int x = 0;
     int y = 0;
