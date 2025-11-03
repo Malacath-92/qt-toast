@@ -80,6 +80,7 @@ Toast::Toast(QWidget* parent)
     m_parent = parent;
 
     // Window settings
+    setAttribute(Qt::WA_ShowWithoutActivating);
     setAttribute(Qt::WidgetAttribute::WA_TranslucentBackground);
     setFocusPolicy(Qt::FocusPolicy::NoFocus);
 
