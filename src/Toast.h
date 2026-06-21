@@ -144,6 +144,7 @@ public:
     void setFixedHeight(int height);
     void applyPreset(ToastPreset preset);
 
+    void setOnLink(std::function<void(const QString&)> on_link);
 
 public slots:
     void show();
